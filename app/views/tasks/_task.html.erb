@@ -10,12 +10,26 @@
 </tr>
 -->
 <div class="panel panel-info">
-  <div class="panel-heading">created <%= time_ago_in_words(task.created_at) %> ago</div>
-  <div class="panel-body"><%= task.content %></div>
+  <div class="panel-heading">
+    <%= link_to edit_task_path(task) do %>
+      created <%= time_ago_in_words(task.created_at) %> ago
+    <% end %>
+  </div>
+  <div class="panel-body">
+    <%= task.content %>
+  </div>
   <div class="panel-footer text-center btn-group btn-group-justified">
-    <% if task.state == "to_do" %><%= link_to "<i class='fa fa-arrow-right'></i>".html_safe, change_task_path(task, state: "doing"), method: :put, class: 'btn btn-info btn-md btn-block' %><% end %>
-    <% if task.state == "doing" %><%= link_to "<i class='fa fa-arrow-left'></i>".html_safe, change_task_path(task, state: "to_do"), method: :put, class: 'btn btn-info btn-md btn-block'  %><% end %>
-    <% if task.state == "doing" %><%= link_to "<i class='fa fa-arrow-right'></i>".html_safe, change_task_path(task, state: "done"), method: :put, class: 'btn btn-info btn-md btn-block'  %><% end %>
-    <% if task.state == "done" %><%= link_to "<i class='fa fa-arrow-left'></i>".html_safe, change_task_path(task, state: "doing"), method: :put, class: 'btn btn-info btn-md btn-block'  %><% end %>
+    <% if task.state == "to_do" %>
+      <%= link_to "<i class='fa fa-arrow-right'></i>".html_safe, change_task_path(task, state: "doing"), method: :put, class: 'btn btn-info btn-md btn-block' %>
+    <% end %>
+    <% if task.state == "doing" %>
+      <%= link_to "<i class='fa fa-arrow-left'></i>".html_safe, change_task_path(task, state: "to_do"), method: :put, class: 'btn btn-info btn-md btn-block'  %>
+    <% end %>
+    <% if task.state == "doing" %>
+      <%= link_to "<i class='fa fa-arrow-right'></i>".html_safe, change_task_path(task, state: "done"), method: :put, class: 'btn btn-info btn-md btn-block'  %>
+    <% end %>
+    <% if task.state == "done" %>
+      <%= link_to "<i class='fa fa-arrow-left'></i>".html_safe, change_task_path(task, state: "doing"), method: :put, class: 'btn btn-info btn-md btn-block'  %>
+    <% end %>
   </div>
 </div>
