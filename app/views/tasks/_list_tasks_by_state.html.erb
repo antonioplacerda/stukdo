@@ -8,17 +8,6 @@
     </tr>
   </thead>
   <tbody>
-    <% @tasks.where(state: @state).each do |task| %>
-      <tr>
-        <td><%= task.content %></td>
-        <td><%= task.state %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><% if task.state != "to_do" %><%= link_to 'Mark as To Do', change_task_path(task, state: "to_do"), method: :put %><% end %></td>
-        <td><% if task.state != "doing" %><%= link_to 'Mark as Doing', change_task_path(task, state: "doing"), method: :put %><% end %></td>
-        <td><% if task.state != "done" %><%= link_to 'Mark as Done', change_task_path(task, state: "done"), method: :put %><% end %></td>
-      </tr>
-    <% end %>
+    <%= render @tasks.where(state: @state) %>
   </tbody>
 </table>
