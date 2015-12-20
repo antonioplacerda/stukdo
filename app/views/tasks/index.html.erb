@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<% @state = "to_do", @state_title = "To Do" %>
-<%= render 'list_tasks_by_state' %>
+<div class="row">
+  <% @state = "to_do", @state_title = "To Do" %>
+  <%= render 'display_tasks_by_state' %>
 
-<% @state = "doing", @state_title = "Doing" %>
-<%= render 'list_tasks_by_state' %>
+  <% @state = "doing", @state_title = "Doing" %>
+  <%= render 'display_tasks_by_state' %>
 
-<% @state = "done", @state_title = "Done" %>
-<%= render 'list_tasks_by_state' %>
+  <% @state = "done", @state_title = "Done" %>
+  <%= render 'display_tasks_by_state' %>
+</div>
 
 <br>
 
